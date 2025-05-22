@@ -1,99 +1,159 @@
-# TypeScript Tutorial Project
+# TypeScript Learning Journey
 
-A step-by-step learning project for TypeScript fundamentals with practical examples.
+A comprehensive learning project for TypeScript with detailed documentation and examples.
+
+## Table of Contents
+
+- [TypeScript Basics](./lessonone/README.md)
+- [Practical TypeScript: Pizza Ordering System](./whyts/README.md)
 
 ## Project Structure
 
 ```
 typescript-tutorial/
-├── lessonone/
-│   └── index.ts      # Basic TypeScript types and object structure examples
-├── whyts/
-│   ├── index.ts      # Pizza ordering system in TypeScript
-│   └── index.js      # Compiled JavaScript version of the pizza ordering system
-└── README.md         # This file
+├── README.md                 # This overview file
+├── lessonone/                # Basic TypeScript concepts
+│   ├── index.ts              # Type examples and demonstrations
+│   ├── index.js              # Compiled JavaScript version
+│   └── README.md             # Detailed notes on TypeScript basics
+└── whyts/                    # Why use TypeScript demonstration
+    ├── index.ts              # Pizza ordering system 
+    ├── index.js              # Compiled JavaScript version
+    └── README.md             # Notes on practical TypeScript benefits
 ```
 
-## Lessons Overview
+## Using Bun with TypeScript
 
-### Lesson One: TypeScript Basics
-- Primitive data types (string, number, boolean)
-- Custom types
-- Object types and nested objects
-- Type definitions for structured data
+This project uses [Bun](https://bun.sh/) as the runtime for TypeScript files. Bun offers several advantages for TypeScript development:
 
-### Why TypeScript: Pizza Ordering System
-A practical example demonstrating TypeScript's benefits with:
-- Type definitions for menu items
-- Strongly-typed function parameters and returns
-- Object structure enforcement
-- Error prevention through type checking
-
-## Running the Examples
-
-### Prerequisites
-- Node.js (v14 or later recommended)
-- TypeScript installed globally
+### Installation
 
 ```bash
-npm install -g typescript
+# Install Bun
+curl -fsSL https://bun.sh/install | bash
 ```
 
-### Compile TypeScript Files
+### Running TypeScript Files
+
 ```bash
-# Compile a specific TypeScript file
-tsc lessonone/index.ts
+# Run a TypeScript file directly
+bun path/to/file.ts
 
-# Or compile a specific directory
-tsc whyts/index.ts
+# Run with watch mode (auto-reload on changes)
+bun --watch path/to/file.ts
 ```
 
-### Run with ts-node (recommended for development)
+### Using as a Package Manager
+
 ```bash
-# Install ts-node globally
-npm install -g ts-node
+# Initialize a new project
+bun init
 
-# Run TypeScript files directly
-ts-node lessonone/index.ts
-ts-node whyts/index.ts
+# Install dependencies
+bun install <package-name>
+
+# Run scripts from package.json
+bun run <script-name>
 ```
 
-## Setting Up a TypeScript Project
+## TypeScript Setup
 
-To create a properly configured TypeScript project:
+### Using TypeScript with Bun
 
-1. Initialize a new TypeScript project:
+Bun has built-in TypeScript support. To configure TypeScript:
+
 ```bash
-npm init -y
-npm install typescript --save-dev
-npx tsc --init
+# Create tsconfig.json
+bunx tsc --init
 ```
 
-2. Configure your `tsconfig.json` with appropriate settings
-3. Add scripts to your package.json:
+### Key tsconfig.json Settings
+
 ```json
-"scripts": {
-  "start": "tsc && node dist/index.js",
-  "dev": "ts-node src/index.ts"
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
 }
 ```
 
-## Key TypeScript Features Demonstrated
+## Learning Path
 
-1. **Type Annotations** - Explicitly defining variable types
-2. **Custom Type Definitions** - Creating reusable types
-3. **Object Interfaces** - Defining object structures
-4. **Type Safety** - Preventing runtime errors through compile-time checking
+1. **Start with [TypeScript Basics](./lessonone/README.md)**
+   - Learn fundamental types and concepts
+   - Understand type annotations and inference
 
-## Learning Resources
+2. **Apply concepts with the [Pizza Ordering System](./whyts/README.md)**
+   - See practical benefits of TypeScript
+   - Learn about object types and type safety
 
-- [TypeScript Official Documentation](https://www.typescriptlang.org/docs/)
+3. **Next Topics to Explore**
+   - Interfaces and Classes
+   - Generics
+   - Advanced Types
+   - Modules and Namespaces
+   - Decorators
+
+## TypeScript Cheat Sheet
+
+### Basic Types
+
+```typescript
+// Primitive types
+let isDone: boolean = false;
+let decimal: number = 6;
+let color: string = "blue";
+
+// Arrays
+let list: number[] = [1, 2, 3];
+let names: Array<string> = ["Alice", "Bob"];
+
+// Tuple
+let tuple: [string, number] = ["hello", 10];
+
+// Any (avoid when possible)
+let notSure: any = 4;
+
+// Void
+function warnUser(): void {
+  console.log("Warning!");
+}
+
+// Never
+function error(): never {
+  throw new Error("Error");
+}
+```
+
+### Object Types
+
+```typescript
+// Object type
+let person: { name: string; age: number } = { name: "Alice", age: 25 };
+
+// Type alias
+type Person = {
+  name: string;
+  age: number;
+  email?: string; // Optional property
+};
+
+// Interface
+interface User {
+  id: number;
+  name: string;
+  readonly role: string; // Can't be changed after creation
+}
+```
+
+## Resources
+
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Bun Documentation](https://bun.sh/docs)
 - [TypeScript Playground](https://www.typescriptlang.org/play)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
-
-## Next Steps
-
-- Add function return types
-- Explore generics
-- Implement interfaces
-- Learn about TypeScript modules
+- [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
