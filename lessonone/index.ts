@@ -5,6 +5,8 @@ let myName: string = "Dhrubo"
 let myAge : number = 21
 let isMarried: boolean = false
 
+let ages =  [100,230]
+
 
 // creating new type
 
@@ -25,7 +27,7 @@ type Person = {
     age: number
     isMarried: boolean
     // nested object
-    address: Address
+    address?: Address
 }
 
 
@@ -33,11 +35,6 @@ let person1: Person = {
     name: "Dhrubo",
     age: 21,
     isMarried: true,
-    address:{
-        street: "Dhaka",
-        country: "Bd",
-        postCode: 1200
-    }
 }
 
 let person2:Person = {
@@ -50,5 +47,22 @@ let person2:Person = {
         postCode: 1200
     }
 }
+
+function displayInfo(person){
+    console.log(`${person.name} lives at ${person.address.street}`);
+    
+}
+
+displayInfo(person1)
+
+
+// people is array of person object
+
+let people: Person[] = [person1,person2]
+
+// also can do Array<Person>
+
+
+
 
 
