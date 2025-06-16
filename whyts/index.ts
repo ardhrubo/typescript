@@ -1,5 +1,6 @@
 
 type Pizza = {
+    id: number
     name: string
     price: number
 }
@@ -7,17 +8,16 @@ type Pizza = {
 type Order = {
     id: number
     pizza: Pizza,
-    status: string
+    status: "pending" | "completed" | "canceled" | "ordered"
 }
 
 
-const menu = [
-    {name: 'Margheritac', price: 8},
-    {name: 'Marinara', price: 9},
-    {name: 'Quattro Stagioni', price: 10},
-    {name: 'Carbonara', price: 12},
-    {name: 'Frutti di Mare', price: 10},
-
+const menu: Pizza[] = [
+    {id: 1, name: 'Margheritac', price: 8},
+    {id: 2, name: 'Marinara', price: 9},
+    {id: 3, name: 'Quattro Stagioni', price: 10},
+    {id: 4, name: 'Carbonara', price: 12},
+    {id: 5, name: 'Frutti di Mare', price: 10},
 ]
 
 
@@ -56,7 +56,7 @@ function placeOrder(pizzaName:string){
 
     cashInRegister += selectedPizza.price;
     console.log(cashInRegister);
-    const order = {id: orderID++ ,pizza: selectedPizza, status: 'ordered'};
+    const order:Order = {id: orderID++ , pizza: selectedPizza, status: 'ordered'};
     orderQueue.push(order);
     return order;
 }
@@ -73,19 +73,39 @@ function completeOrder(orderID : number){
     return order;
 }
 
+function getPizzaDetails(identifier: string|number){
 
-addNewPizza({name:"Chicken Bacon", price:12})
-addNewPizza({name: "BBQ Chicken", price: 12})
-addNewPizza({name: "Spicay Meat", price: 12})
+    if(typeof identifier === "string"){
+        return menu.find(pizzaObj=> pizzaObj.name.toLowerCase() === identifier.toLowerCase())
+    }else{
+        return menu.find(pizzaObj=> pizzaObj.id===identifier)
+    }
+
+
+
+//     const selectedPizza = menu.find(pizzaObj => pizzaObj.id === identifier || pizzaObj.name === identifier)
+  
+//   return selectedPizza
+
+}
+
+
+
+
+addNewPizza({id:6,name:"Chicken Bacon", price:12})
+addNewPizza({id:7,name: "BBQ Chicken", price: 12})
+addNewPizza({id:8,name: "Spicay Meat", price: 12})
 
 placeOrder("chicken Bacon")
-
+  
 console.log(placeOrder('Margheritac'));
 completeOrder(1)
 
 console.log("Menu",menu)
 console.log("Cash In Register:", cashInRegister)
 console.log("Order Queue", orderQueue)
+console.log(getPizzaDetails("Chicken Bacon"));
+console.log(getPizzaDetails(4));
 
 
 

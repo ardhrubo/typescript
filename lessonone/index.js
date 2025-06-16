@@ -3,6 +3,7 @@
 var myName = "Dhrubo";
 var myAge = 21;
 var isMarried = false;
+var ages = [100, 230];
 var favFood = "Mango";
 var person1 = {
     name: "Dhrubo",
@@ -22,4 +23,7 @@ var person2 = {
 function displayInfo(person) {
     console.log("".concat(person.name, " lives at ").concat(person.address.street));
 }
-displayInfo(person2);
+displayInfo(person1);
+// people is array of person object
+var people = [person1, person2];
+// also can do Array<Person>
