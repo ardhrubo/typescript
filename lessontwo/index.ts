@@ -37,4 +37,5 @@ console.log(fetchUserDetails("Atik"));
 
 
 
-
+let val:any = 1
+val = "d"

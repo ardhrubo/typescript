@@ -34,7 +34,7 @@ console.log(cashInRegister)
  */
 
 
-function addNewPizza(pizza:Pizza) {
+function addNewPizza(pizza:Pizza):void {
     menu.push(pizza);
 }
 
@@ -73,17 +73,19 @@ function completeOrder(orderID : number){
     return order;
 }
 
-function getPizzaDetails(identifier: string|number){
+export function getPizzaDetails(identifier: string|number):Pizza|undefined{
 
     if(typeof identifier === "string"){
         return menu.find(pizzaObj=> pizzaObj.name.toLowerCase() === identifier.toLowerCase())
-    }else{
+    }else if(typeof identifier==='number'){
         return menu.find(pizzaObj=> pizzaObj.id===identifier)
+    }else{
+        throw new TypeError("Paramerter 'identifier' must be number or string")
     }
 
 
 
-//     const selectedPizza = menu.find(pizzaObj => pizzaObj.id === identifier || pizzaObj.name === identifier)
+//     const selectedPizza = menu.find(p izzaObj => pizzaObj.id === identifier || pizzaObj.name === identifier)
   
 //   return selectedPizza
 
@@ -105,7 +107,7 @@ console.log("Menu",menu)
 console.log("Cash In Register:", cashInRegister)
 console.log("Order Queue", orderQueue)
 console.log(getPizzaDetails("Chicken Bacon"));
-console.log(getPizzaDetails(1));
+// console.log(getPizzaDetails(true));
 
 
 
