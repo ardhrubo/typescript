@@ -105,7 +105,7 @@ console.log("Menu",menu)
 console.log("Cash In Register:", cashInRegister)
 console.log("Order Queue", orderQueue)
 console.log(getPizzaDetails("Chicken Bacon"));
-console.log(getPizzaDetails(4));
+console.log(getPizzaDetails(1));
 
 
 

@@ -14,5 +14,27 @@ type User = {
     role: UserRole
 }
 
+const users:User[] = [
+    {username: "Atik",role: "member"},
+    {username:"Ifty",role:"admin"},
+    {username:"Roky",role:"guest"}
+]
+
+
+function fetchUserDetails(username:string):User {
+    const user = users.find(user=>user.username===username)
+    if(!user){
+        throw new Error(`User with username ${username} not found`)
+
+    }
+    return user
+}
+
+
+
+console.log(fetchUserDetails("aik"))
+console.log(fetchUserDetails("Atik"));
+
+
 
 
