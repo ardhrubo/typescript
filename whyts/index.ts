@@ -1,23 +1,23 @@
 
 type Pizza = {
-    id: number
+    id: 
     name: string
     price: number
 }
 
 type Order = {
-    id: number
+    id: number 
     pizza: Pizza,
     status: "pending" | "completed" | "canceled" | "ordered"
 }
 
 
 const menu: Pizza[] = [
-    {id: 1, name: 'Margheritac', price: 8},
-    {id: 2, name: 'Marinara', price: 9},
-    {id: 3, name: 'Quattro Stagioni', price: 10},
-    {id: 4, name: 'Carbonara', price: 12},
-    {id: 5, name: 'Frutti di Mare', price: 10},
+    { name: 'Margheritac', price: 8},
+    { name: 'Marinara', price: 9},
+    { name: 'Quattro Stagioni', price: 10},
+    { name: 'Carbonara', price: 12},
+    { name: 'Frutti di Mare', price: 10},
 ]
 
 
@@ -40,7 +40,7 @@ function addNewPizza(pizza:Pizza):void {
 
 
 
-function placeOrder(pizzaName:string){
+function placeOrder(pizzaName:string):Order|undefined{
     const selectedPizza = menu.find(pizzaObj => pizzaObj.name === pizzaName);
 
     // add the income to cashInRegister
@@ -63,7 +63,7 @@ function placeOrder(pizzaName:string){
 
 
 
-function completeOrder(orderID : number){
+function completeOrder(orderID : number):Order|undefined{
     const order = orderQueue.find(orderobj => orderobj.id === orderID);
     if(!order){
         console.error(`${order} does not exist`)
@@ -94,9 +94,9 @@ export function getPizzaDetails(identifier: string|number):Pizza|undefined{
 
 
 
-addNewPizza({id:6,name:"Chicken Bacon", price:12})
-addNewPizza({id:7,name: "BBQ Chicken", price: 12})
-addNewPizza({id:8,name: "Spicay Meat", price: 12})
+addNewPizza({name:"Chicken Bacon", price:12})
+addNewPizza({name: "BBQ Chicken", price: 12})
+addNewPizza({name: "Spicay Meat", price: 12})
 
 placeOrder("chicken Bacon")
   
